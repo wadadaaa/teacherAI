@@ -4,8 +4,14 @@ const { OPENAI_API_KEY } = require("./config");
 const express = require("express");
 const cors = require("cors");
 const port = process.env.PORT || 5001;
+const corsOptions = {
+  origin: "*",
+  methods: ["POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  optionsSuccessStatus: 200,
+};
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const configuration = new Configuration({
