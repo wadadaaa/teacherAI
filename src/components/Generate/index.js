@@ -18,7 +18,7 @@ const Generate = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "/ask",
+        `${process.env.REACT_APP_API_BASE_URL}/ask`,
         { subject: data.subject },
         {
           headers: {

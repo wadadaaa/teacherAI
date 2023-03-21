@@ -4,7 +4,6 @@ const { OPENAI_API_KEY } = require("./config");
 const express = require("express");
 const cors = require("cors");
 const port = process.env.PORT || 5001;
-
 const app = express();
 app.use(cors());
 app.use(express.json());
