@@ -6,7 +6,7 @@ const cors = require("cors");
 const port = process.env.PORT || 5001;
 const corsOptions = {
   origin: "*",
-  methods: ["POST"],
+  methods: ["POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200,
 };
@@ -17,6 +17,8 @@ app.use(express.json());
 const configuration = new Configuration({
   apiKey: OPENAI_API_KEY,
 });
+
+app.options("/ask", cors(corsOptions)); // for handling preflight requests
 
 app.post("/ask", async (req, res) => {
   const prompt = req.body.subject;
